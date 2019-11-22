@@ -15,6 +15,8 @@
 
 @property(nonatomic, weak) UIView *selectionView;
 
+@property(nonatomic, strong) UITextField *textField;
+
 @end
 
 @implementation ViewController
@@ -22,6 +24,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor lightGrayColor];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, 25, 90, 30)];
+    label.textColor = [UIColor blackColor];
+    label.font = [UIFont systemFontOfSize:18];
+    label.text = @"选中index:";
+    [self.view addSubview:label];
+    
+    self.textField = [[UITextField alloc] initWithFrame:CGRectMake(130, 25, 100, 30)];
+    self.textField.backgroundColor = [UIColor greenColor];
+    self.textField.keyboardType = UIKeyboardTypePhonePad;
+    [self.view addSubview:self.textField];
     
     self.lotteryView.frame = CGRectMake(30, 100, 306, 162);
     [self.view addSubview:self.lotteryView];
@@ -54,7 +67,7 @@
 //        sender.alpha = 1.0;
 //        sender.enabled = YES;
 //    }];
-    [self.lotteryView startLotteryAnimationOnViewIndex:3 lotteryBlock:^(UIView *view, NSInteger curIndex) {
+    [self.lotteryView startLotteryAnimationOnViewIndex:self.textField.text.integerValue lotteryBlock:^(UIView *view, NSInteger curIndex) {
         self.selectionView = view;
         NSLog(@"the index is %ld",(long)curIndex);
     } completion:^{

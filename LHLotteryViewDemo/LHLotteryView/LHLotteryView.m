@@ -144,6 +144,7 @@
 - (void)startLotteryAnimationOnViewIndex:(int)index lotteryBlock:(void(^)(UIView *view,NSInteger curIndex))lotteryBlock completion:(dispatch_block_t)completion{
     
     if (index >= self.viewArr.count||self.lotteryDisplayLink.isPaused == NO) {
+        !completion ?: completion();
         return;
     }
     [self initDatas];
