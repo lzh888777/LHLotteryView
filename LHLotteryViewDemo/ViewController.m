@@ -67,7 +67,7 @@
 //        sender.alpha = 1.0;
 //        sender.enabled = YES;
 //    }];
-    [self.lotteryView startLotteryAnimationOnViewIndex:self.textField.text.integerValue lotteryBlock:^(UIView *view, NSInteger curIndex) {
+    [self.lotteryView startLotteryAnimationOnViewIndex:(int)self.textField.text.integerValue lotteryBlock:^(UIView *view, NSInteger curIndex) {
         self.selectionView = view;
         NSLog(@"the index is %ld",(long)curIndex);
     } completion:^{
@@ -80,7 +80,7 @@
 {
     if (!_lotteryView) {
         NSMutableArray *views = [NSMutableArray arrayWithCapacity:6];
-        for (NSInteger index = 0; index < 8 ; index ++) {
+        for (NSInteger index = 0; index < 6 ; index ++) {
             UIView *view = [UIView new];
             view.backgroundColor = [UIColor yellowColor];
             view.layer.cornerRadius = 6;
@@ -91,7 +91,7 @@
         param.speedUpAniStep = (int)views.count;
         param.speedDownAniStep = (int)views.count;
         param.col = 3;
-        param.row = 3;
+        param.row = 2;
         param.speedLinerAniCicle = 5;
         _lotteryView = [[LHLotteryView alloc] initWithViews:views param:param];
     }

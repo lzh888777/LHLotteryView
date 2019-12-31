@@ -77,7 +77,7 @@
 - (void)initSubViews
 {
     NSAssert(self.viewParam.col > 1 && self.viewParam.row > 1 , @"invalid param");
-    if (self.viewParam.col > 2 && self.viewParam.row > 2) {
+    if (self.viewParam.col >= 2 && self.viewParam.row >= 2) {
         NSAssert(self.viewParam.col * self.viewParam.row - (self.viewParam.col - 2) * (self.viewParam.row - 2) == self.viewArr.count , @"invalid param");
     }
     [self addSubview:self.selectionBgView];
